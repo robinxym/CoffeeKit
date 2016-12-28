@@ -24,7 +24,8 @@ class WSManager {
     let urlString = String(format: "https://api.Foursquare.com/v2/venues/search?client_id=%@&client_secret=%@&v=%@&ll=%@&categoryId=%@", clientId, clientSecret, dateString, coordinate, categoryId)
     print(urlString)
     let url = URL(string: urlString)!
-    let request = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
+    var request = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
+    request.httpMethod = "GET"
     let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
       if let error = error {
         failHandler(error)
