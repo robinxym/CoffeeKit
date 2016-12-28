@@ -15,6 +15,8 @@
 		4DA50A9E1E140AC9009F4284 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DA50A9C1E140AC9009F4284 /* LaunchScreen.storyboard */; };
 		4DA50AA91E140AC9009F4284 /* CoffeeKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA50AA81E140AC9009F4284 /* CoffeeKitTests.swift */; };
 		4DA50AB41E140AC9009F4284 /* CoffeeKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA50AB31E140AC9009F4284 /* CoffeeKitUITests.swift */; };
+		4DA50AC21E140DC2009F4284 /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA50AC11E140DC2009F4284 /* Cafe.swift */; };
+		4DA50AC41E1412B7009F4284 /* WSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA50AC31E1412B7009F4284 /* WSManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		4DA50AAF1E140AC9009F4284 /* CoffeeKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoffeeKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DA50AB31E140AC9009F4284 /* CoffeeKitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeKitUITests.swift; sourceTree = "<group>"; };
 		4DA50AB51E140AC9009F4284 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DA50AC11E140DC2009F4284 /* Cafe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
+		4DA50AC31E1412B7009F4284 /* WSManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				4DA50A911E140AC9009F4284 /* AppDelegate.swift */,
 				4DA50A931E140AC9009F4284 /* MasterViewController.swift */,
 				4DA50A951E140AC9009F4284 /* DetailViewController.swift */,
+				4DA50AC11E140DC2009F4284 /* Cafe.swift */,
+				4DA50AC31E1412B7009F4284 /* WSManager.swift */,
 				4DA50A971E140AC9009F4284 /* Main.storyboard */,
 				4DA50A9A1E140AC9009F4284 /* Assets.xcassets */,
 				4DA50A9C1E140AC9009F4284 /* LaunchScreen.storyboard */,
@@ -265,6 +271,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DA50AC41E1412B7009F4284 /* WSManager.swift in Sources */,
+				4DA50AC21E140DC2009F4284 /* Cafe.swift in Sources */,
 				4DA50A961E140AC9009F4284 /* DetailViewController.swift in Sources */,
 				4DA50A941E140AC9009F4284 /* MasterViewController.swift in Sources */,
 				4DA50A921E140AC9009F4284 /* AppDelegate.swift in Sources */,

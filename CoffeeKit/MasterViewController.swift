@@ -11,7 +11,7 @@ import UIKit
 class MasterViewController: UITableViewController {
 
   var detailViewController: DetailViewController? = nil
-  var objects = [Any]()
+  var objects = [Venue]()
 
 
   override func viewDidLoad() {
@@ -24,6 +24,15 @@ class MasterViewController: UITableViewController {
     if let split = self.splitViewController {
         let controllers = split.viewControllers
         self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+    }
+    //https://api.Foursquare.com/v2/venues/search?client_id=UQRJNCYNHU3OUIO3FJFZE32WSUI3N4RRWZ2LYHFZIHHIQTRS&client_secret=TDPUSTQ5ZSCS3BO0IZW0JFQDOQSJPS0O0LSIXQE3BQUO2MVQ&v=20161229&ll=37.33,-122.03&categoryId=4bf58dd8d48988d1e0931735
+    WSManager.shared.getCafes(by: "37.33,-122.03", successHandler: { (cafe) in
+      self.objects = cafe.response.venues
+      DispatchQueue.main.async {
+        self.tableView.reloadData()
+      }
+    }) { (error) in
+
     }
   }
 
@@ -38,22 +47,22 @@ class MasterViewController: UITableViewController {
   }
 
   func insertNewObject(_ sender: Any) {
-    objects.insert(NSDate(), at: 0)
-    let indexPath = IndexPath(row: 0, section: 0)
-    self.tableView.insertRows(at: [indexPath], with: .automatic)
+//    objects.insert(NSDate(), at: 0)
+//    let indexPath = IndexPath(row: 0, section: 0)
+//    self.tableView.insertRows(at: [indexPath], with: .automatic)
   }
 
   // MARK: - Segues
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "showDetail" {
-        if let indexPath = self.tableView.indexPathForSelectedRow {
-            let object = objects[indexPath.row] as! NSDate
-            let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-            controller.detailItem = object
-            controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
-            controller.navigationItem.leftItemsSupplementBackButton = true
-        }
+//        if let indexPath = self.tableView.indexPathForSelectedRow {
+//            let object = objects[indexPath.row] as! NSDate
+//            let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+//            controller.detailItem = object
+//            controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
+//            controller.navigationItem.leftItemsSupplementBackButton = true
+//        }
     }
   }
 
@@ -70,8 +79,8 @@ class MasterViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-    let object = objects[indexPath.row] as! NSDate
-    cell.textLabel!.text = object.description
+    let object = objects[indexPath.row] as Venue
+    cell.textLabel!.text = object.name
     return cell
   }
 
