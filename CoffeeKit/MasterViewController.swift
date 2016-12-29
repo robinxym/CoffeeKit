@@ -81,6 +81,10 @@ class MasterViewController: UITableViewController {
 
     let object = objects[indexPath.row] as Venue
     cell.textLabel!.text = object.name
+    let nf = NumberFormatter()
+    nf.groupingSeparator = ","
+    nf.numberStyle = .decimal
+    cell.detailTextLabel?.text = nf.string(from: object.location.distance as NSNumber)! + " m"
     return cell
   }
 

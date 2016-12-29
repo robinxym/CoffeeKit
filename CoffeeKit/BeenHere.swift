@@ -1,25 +1,19 @@
 //
-//	RootClass.swift
+//	BeenHere.swift
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation
 
-struct Cafe {
+struct BeenHere{
 
-	var meta : Meta!
-	var response : Response!
+	var lastCheckinExpiredAt : Int!
 
 
 	/**
 	 * Instantiate the instance using the passed dictionary values to set the properties values
 	 */
 	init(fromDictionary dictionary: NSDictionary){
-		if let metaData = dictionary["meta"] as? NSDictionary{
-				meta = Meta(fromDictionary: metaData)
-			}
-		if let responseData = dictionary["response"] as? NSDictionary{
-				response = Response(fromDictionary: responseData)
-			}
+		lastCheckinExpiredAt = dictionary["lastCheckinExpiredAt"] as? Int
 	}
 
 	/**
@@ -28,11 +22,8 @@ struct Cafe {
 	func toDictionary() -> NSDictionary
 	{
 		let dictionary = NSMutableDictionary()
-		if meta != nil{
-			dictionary["meta"] = meta.toDictionary()
-		}
-		if response != nil{
-			dictionary["response"] = response.toDictionary()
+		if lastCheckinExpiredAt != nil{
+			dictionary["lastCheckinExpiredAt"] = lastCheckinExpiredAt
 		}
 		return dictionary
 	}

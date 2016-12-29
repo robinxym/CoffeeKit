@@ -11,8 +11,8 @@ import Foundation
 class WSManager {
   static let shared = WSManager()
   let categoryId = "4bf58dd8d48988d1e0931735"
-  let clientId = "UQRJNCYNHU3OUIO3FJFZE32WSUI3N4RRWZ2LYHFZIHHIQTRS"
-  let clientSecret = "TDPUSTQ5ZSCS3BO0IZW0JFQDOQSJPS0O0LSIXQE3BQUO2MVQ"
+  let clientId = ""
+  let clientSecret = ""
   var dateString: String  {
     let df = DateFormatter()
     df.dateFormat = "yyyyMMdd"
@@ -20,7 +20,7 @@ class WSManager {
     return dateString
   }
 
-  func getCafes(by coordinate: String, successHandler: @escaping (Cafe) -> (), failHandler: @escaping (_ error: Error) -> () ) {
+  func getCafes(by coordinate: String, successHandler: @escaping (Cafe) -> (), failHandler: @escaping (_ error: Error?) -> () ) {
     let urlString = String(format: "https://api.Foursquare.com/v2/venues/search?client_id=%@&client_secret=%@&v=%@&ll=%@&categoryId=%@", clientId, clientSecret, dateString, coordinate, categoryId)
     print(urlString)
     let url = URL(string: urlString)!
@@ -29,9 +29,12 @@ class WSManager {
     let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
       if let error = error {
         failHandler(error)
+      }else if let data = data, let dict = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as? NSDictionary {
+        let cafe = Cafe(fromDictionary: dict)
+        successHandler(cafe)
       }else{
-        let cafe = Cafe(data: data!)
-        successHandler(cafe!)
+        failHandler(error)
+//        successHandler(cafe!)
       }
     }
     dataTask.resume()

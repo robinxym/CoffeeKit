@@ -1,25 +1,21 @@
 //
-//	RootClass.swift
+//	Icon.swift
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation
 
-struct Cafe {
+struct Icon{
 
-	var meta : Meta!
-	var response : Response!
+	var prefix : String!
+	var suffix : String!
 
 
 	/**
 	 * Instantiate the instance using the passed dictionary values to set the properties values
 	 */
 	init(fromDictionary dictionary: NSDictionary){
-		if let metaData = dictionary["meta"] as? NSDictionary{
-				meta = Meta(fromDictionary: metaData)
-			}
-		if let responseData = dictionary["response"] as? NSDictionary{
-				response = Response(fromDictionary: responseData)
-			}
+		prefix = dictionary["prefix"] as? String
+		suffix = dictionary["suffix"] as? String
 	}
 
 	/**
@@ -28,11 +24,11 @@ struct Cafe {
 	func toDictionary() -> NSDictionary
 	{
 		let dictionary = NSMutableDictionary()
-		if meta != nil{
-			dictionary["meta"] = meta.toDictionary()
+		if prefix != nil{
+			dictionary["prefix"] = prefix
 		}
-		if response != nil{
-			dictionary["response"] = response.toDictionary()
+		if suffix != nil{
+			dictionary["suffix"] = suffix
 		}
 		return dictionary
 	}

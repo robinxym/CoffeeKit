@@ -1,25 +1,23 @@
 //
-//	RootClass.swift
+//	HereNow.swift
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation
 
-struct Cafe {
+struct HereNow{
 
-	var meta : Meta!
-	var response : Response!
+	var count : Int!
+	var groups : [AnyObject]!
+	var summary : String!
 
 
 	/**
 	 * Instantiate the instance using the passed dictionary values to set the properties values
 	 */
 	init(fromDictionary dictionary: NSDictionary){
-		if let metaData = dictionary["meta"] as? NSDictionary{
-				meta = Meta(fromDictionary: metaData)
-			}
-		if let responseData = dictionary["response"] as? NSDictionary{
-				response = Response(fromDictionary: responseData)
-			}
+		count = dictionary["count"] as? Int
+		groups = dictionary["groups"] as? [AnyObject]
+		summary = dictionary["summary"] as? String
 	}
 
 	/**
@@ -28,11 +26,14 @@ struct Cafe {
 	func toDictionary() -> NSDictionary
 	{
 		let dictionary = NSMutableDictionary()
-		if meta != nil{
-			dictionary["meta"] = meta.toDictionary()
+		if count != nil{
+			dictionary["count"] = count
 		}
-		if response != nil{
-			dictionary["response"] = response.toDictionary()
+		if groups != nil{
+			dictionary["groups"] = groups
+		}
+		if summary != nil{
+			dictionary["summary"] = summary
 		}
 		return dictionary
 	}

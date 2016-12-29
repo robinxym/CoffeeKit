@@ -1,25 +1,21 @@
 //
-//	RootClass.swift
+//	Meta.swift
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation
 
-struct Cafe {
+struct Meta{
 
-	var meta : Meta!
-	var response : Response!
+	var code : Int!
+	var requestId : String!
 
 
 	/**
 	 * Instantiate the instance using the passed dictionary values to set the properties values
 	 */
 	init(fromDictionary dictionary: NSDictionary){
-		if let metaData = dictionary["meta"] as? NSDictionary{
-				meta = Meta(fromDictionary: metaData)
-			}
-		if let responseData = dictionary["response"] as? NSDictionary{
-				response = Response(fromDictionary: responseData)
-			}
+		code = dictionary["code"] as? Int
+		requestId = dictionary["requestId"] as? String
 	}
 
 	/**
@@ -28,11 +24,11 @@ struct Cafe {
 	func toDictionary() -> NSDictionary
 	{
 		let dictionary = NSMutableDictionary()
-		if meta != nil{
-			dictionary["meta"] = meta.toDictionary()
+		if code != nil{
+			dictionary["code"] = code
 		}
-		if response != nil{
-			dictionary["response"] = response.toDictionary()
+		if requestId != nil{
+			dictionary["requestId"] = requestId
 		}
 		return dictionary
 	}

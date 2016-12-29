@@ -1,25 +1,23 @@
 //
-//	RootClass.swift
+//	LabeledLatLng.swift
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation
 
-struct Cafe {
+struct LabeledLatLng{
 
-	var meta : Meta!
-	var response : Response!
+	var label : String!
+	var lat : Float!
+	var lng : Float!
 
 
 	/**
 	 * Instantiate the instance using the passed dictionary values to set the properties values
 	 */
 	init(fromDictionary dictionary: NSDictionary){
-		if let metaData = dictionary["meta"] as? NSDictionary{
-				meta = Meta(fromDictionary: metaData)
-			}
-		if let responseData = dictionary["response"] as? NSDictionary{
-				response = Response(fromDictionary: responseData)
-			}
+		label = dictionary["label"] as? String
+		lat = dictionary["lat"] as? Float
+		lng = dictionary["lng"] as? Float
 	}
 
 	/**
@@ -28,11 +26,14 @@ struct Cafe {
 	func toDictionary() -> NSDictionary
 	{
 		let dictionary = NSMutableDictionary()
-		if meta != nil{
-			dictionary["meta"] = meta.toDictionary()
+		if label != nil{
+			dictionary["label"] = label
 		}
-		if response != nil{
-			dictionary["response"] = response.toDictionary()
+		if lat != nil{
+			dictionary["lat"] = lat
+		}
+		if lng != nil{
+			dictionary["lng"] = lng
 		}
 		return dictionary
 	}

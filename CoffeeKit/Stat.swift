@@ -1,25 +1,23 @@
 //
-//	RootClass.swift
+//	Stat.swift
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation
 
-struct Cafe {
+struct Stat{
 
-	var meta : Meta!
-	var response : Response!
+	var checkinsCount : Int!
+	var tipCount : Int!
+	var usersCount : Int!
 
 
 	/**
 	 * Instantiate the instance using the passed dictionary values to set the properties values
 	 */
 	init(fromDictionary dictionary: NSDictionary){
-		if let metaData = dictionary["meta"] as? NSDictionary{
-				meta = Meta(fromDictionary: metaData)
-			}
-		if let responseData = dictionary["response"] as? NSDictionary{
-				response = Response(fromDictionary: responseData)
-			}
+		checkinsCount = dictionary["checkinsCount"] as? Int
+		tipCount = dictionary["tipCount"] as? Int
+		usersCount = dictionary["usersCount"] as? Int
 	}
 
 	/**
@@ -28,11 +26,14 @@ struct Cafe {
 	func toDictionary() -> NSDictionary
 	{
 		let dictionary = NSMutableDictionary()
-		if meta != nil{
-			dictionary["meta"] = meta.toDictionary()
+		if checkinsCount != nil{
+			dictionary["checkinsCount"] = checkinsCount
 		}
-		if response != nil{
-			dictionary["response"] = response.toDictionary()
+		if tipCount != nil{
+			dictionary["tipCount"] = tipCount
+		}
+		if usersCount != nil{
+			dictionary["usersCount"] = usersCount
 		}
 		return dictionary
 	}
