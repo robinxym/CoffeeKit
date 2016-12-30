@@ -25,8 +25,20 @@ class MasterViewController: UITableViewController {
         let controllers = split.viewControllers
         self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
     }
+    
     //https://api.Foursquare.com/v2/venues/search?client_id=UQRJNCYNHU3OUIO3FJFZE32WSUI3N4RRWZ2LYHFZIHHIQTRS&client_secret=TDPUSTQ5ZSCS3BO0IZW0JFQDOQSJPS0O0LSIXQE3BQUO2MVQ&v=20161229&ll=37.33,-122.03&categoryId=4bf58dd8d48988d1e0931735
-    WSManager.shared.getCafes(by: "37.33,-122.03", successHandler: { (cafe) in
+//    WSManager.shared.getCafes(by: "37.33,-122.03", successHandler: { (cafe) in
+//      self.objects = cafe.response.venues
+//      DispatchQueue.main.async {
+//        self.tableView.reloadData()
+//      }
+//    }) { (error) in
+//    }
+    let manager = WSManager.shared
+    manager.baseURLString = "https://api.Foursquare.com/"
+    manager.defaultParametersDictionary = ["client_id": manager.clientId, "client_secret": manager.clientSecret, "categoryId": manager.categoryId, "v": manager.dateString]
+    WSManager.shared.callWebService(do: .GET, to: "https://api.Foursquare.com/", at: "v2/venues/search", with: ["ll": "37.33,-122.03"], success: { (dict: Dictionary<String, Any>) in
+      let cafe = Cafe(fromDictionary: dict as NSDictionary)
       self.objects = cafe.response.venues
       DispatchQueue.main.async {
         self.tableView.reloadData()
